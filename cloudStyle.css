@@ -20,7 +20,7 @@ body {
 	width: 600px;
 }
 
-.inputBox {
+#inputBox {
 	text-align: center;
 	border-style:solid;
 	border-color: purple;
