@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<title> LyriCloud </title>
+	<link rel="stylesheet" href="cloudStyle.css">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+	<script src="wordcloud2.js-master/src/wordcloud2.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+	<script>
+  		$(function() {
+  		  var availableTags = [ //CHANGE TO AUTOCOMPLETE ARTIST SUGGESTIONS!
+  		    "ActionScript",
+  		    "AppleScript",
+  		    "Asp",
+  		    "BASIC",
+  		    "C",
+  		    "C++",
+  		    "Clojure",
+  		    "COBOL",
+  		    "ColdFusion",
+  		    "Erlang",
+  		    "Fortran",
+  		    "Groovy",
+  		    "Haskell",
+  		    "Java",
+  		    "JavaScript",
+  		    "Lisp",
+  		    "Perl",
+  		    "PHP",
+  		    "Python",
+  		    "Ruby",
+  		    "Scala",
+  		    "Scheme"
+  		  ];
+  		  $( "#inputBox" ).autocomplete({
+  		    source: availableTags
+  		  });
+  		});
+  	</script>
+</head>
+
+
+<body>
+	<p class="header">LyriCloud</p>
+	<div>
+		<canvas id="my_canvas">Your browser does not support the HTML5 canvas tag.</canvas>
+	</div> <br>
+	<script>
+		function makeCloud() {
+			var arr=[['foo', 12], ['bar', 6]];
+			console.log(arr);
+			WordCloud(document.getElementById("my_canvas"), { list: arr, minSize: 4, weightFactor:4, rotateRatio:3}); /*CREATES WORDCLOUD, EDIT OPTIONS FOR WORD CLICKS, ETC.
+		}
+	</script>
+
+	<div class="ui-widget"> <!--Original input form-->
+			<input id="inputBox" type="search" name="artistInputted" value="Input artist here"/>
+			<br><br>
+			<button class="submitButton" onclick="showShare(); makeCloud()">Submit</button>
+	</div>
+
+	<script>
+		function showShare() { // Makes the Add to Cloud and Share buttons appear upon clicking submit
+			 document.getElementById("add-button").style.visibility = "visible";
+    		document.getElementById("share-button").style.visibility = "visible";
+	}
+	</script>
+	<br>
+	<div id="add-button" style="visibility:hidden">
+		<button class="submitButton" onclick="addToCloud()">Add To Cloud</button>   <!--Implement functionality for adding more artists!-->
+	</div>
+	<br>
+	<div id="share-button" style="visibility:hidden"> <!-- Edit to reflect correct website not google -->
+		<a href="http://www.facebook.com/sharer.php?u=http://www.google.com" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" /></a> 
+	</div>
+
+
+
+
+</body>
+</html>
