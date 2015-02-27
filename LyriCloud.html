@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<title> LyriCloud </title>
+	<link rel="stylesheet" href="cloudStyle.css">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+
+<body>
+	<p class="header">LyriCloud</p>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+	<div> <!--Original input form-->
+			<input class="inputBox" type="search" name="artistInputted" value="Input artist here"/>
+			<br><br>
+			<button class="submitButton" onclick="showShare()">Submit</button>
+	</div>
+
+	<script>
+		function showShare() {
+			 document.getElementById("add-button").style.visibility = "visible";
+    		document.getElementById("share-button").style.visibility = "visible";
+	}
+	</script>
+	<br>
+	<div id="add-button" style="visibility:hidden">
+		<button class="submitButton" onclick="addToCloud()">Add To Cloud</button>   <!--Implement functionality!-->
+	</div>
+	<br>
+	<div id="share-button" style="visibility:hidden">
+		<a href="http://www.facebook.com/sharer.php?u=http://www.google.com" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" /></a> 
+	</div>
+
+
+
+
+</body>
+</html>

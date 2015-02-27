@@ -1,0 +1,53 @@
+title {
+	color: black;
+}
+
+body {
+	background-color: #7F7F7F;
+}
+
+.header {
+	color: black;
+	font-size: 32pt;
+	text-align: center;
+	font-style: italic;
+	font-weight: bold;
+}
+
+
+.inputBox {
+	text-align: center;
+	border-style:solid;
+	border-color: purple;
+	border-width:2px;
+	font-size:16pt;
+}
+
+div {
+	text-align: center;
+}
+
+.submitButton {
+	text-align: center;
+	background-color:purple;
+	height:30px;
+	width:80px;
+}
+
+.songPageButton {
+	text-align: left;
+	background-color:purple;
+	height:30px;
+	width:80px;
+}
+
+/* #share-button img {
+	width: 35px;
+	padding: 5px;
+	border: 0;
+	box-shadow: 0;
+	visibility: hidden;
+}
+*/
+
+
