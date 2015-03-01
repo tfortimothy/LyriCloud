@@ -13,111 +13,63 @@
 	
   		$(function() {
   		  var availableTags = [ //CHANGE TO AUTOCOMPLETE ARTIST SUGGESTIONS!
-  		    "The Red Jumpsuit Apparatus",
-  		    "Taylor Swift",
-  		    "Lil Wayne",
-  		    "Eminem",
-  		    "One Direction",
-  		    "Nicki Minaj",
-  		    "Rihanna",
-  		    "Blake Shelton",
-  		    "Katy Perry",
-  		    "Jennifer Lopez",
-  		    "Britney Spears",
-  		    "The White Buffalo",
-  		    "Linkin Park",
-  		    "Michael Jackson",
-  		    "Meghan Trainor",
-  		    "Rebecca Malope",
-  		    "Bruno Mars",
-  		    "Ariana Grande",
-  		    "The Prodigy",
-  		    "AFI",
-  		    "AFROMAN",
-			"Bastille",
-  		    "Demi Lovato",
-  		    "Led Zeppelin",
-  		    "Linkin Park",
-  		    "Pink Floyd",
-  		    "Celine Dion",
-  		    "Whitney Houston",
-  		    "Aerosmith",
-  		    "The Who",
-  		    "Lady Gaga",
-  		    "Nirvana",
-  		    "Depeche Mode",
-  		    "Adele",
-			"Gotye",
-  		    "Pharrell Williams",
-  		    "Flo Rida",
-  		    "Iggy Azalea",
-  		    "Shakira",
-			"Miley Cyrus",
-  		    "LMFAO",
-			"Lorde",
-  		    "Coldplay",
-			"Florida Georgia Line",
-  		    "Jay Sean",
-  		    "Daft Punk",
-  		    "Imagine Dragons",
-  		    "Drake",
-  		    "Ed Sheeran",
-  		    "Maroon 5",
-  		    "Sam Smith",
-  		    "Ellie Goulding",
-  		    "Hozier",
-  		    "The Weeknd",
-  		    "Fall Out Boy",
-  		    "Sara Bareilles",
-  		    "Usher",
-  		    "The Rolling Stones",
-  		    "Weezer",
-  		    "The Black Keys",
-  		    "Lil Wayne",
-  		    "Alan Jackson"			
+  		    "ActionScript",
+  		    "AppleScript",
+  		    "Asp",
+  		    "BASIC",
+  		    "C",
+  		    "C++",
+  		    "Clojure",
+  		    "COBOL",
+  		    "ColdFusion",
+  		    "Erlang",
+  		    "Fortran",
+  		    "Groovy",
+  		    "Haskell",
+  		    "Java",
+  		    "JavaScript",
+  		    "Lisp",
+  		    "Perl",
+  		    "PHP",
+  		    "Python",
+  		    "Ruby",
+  		    "Scala",
+  		    "Scheme"
   		  ];
   		  $( "#inputBox" ).autocomplete({
   		    source: availableTags
   		  });
   		});
   	</script>
-	
-	<script>
-		function makeCloud() {
-			var arr=[['foo', 12], ['bar', 6]];
-			console.log(arr);
-			WordCloud(document.getElementById("my_canvas"), { list: arr, minSize: 4, weightFactor:4, rotateRatio:3});
-		}
-		
-		function showShare() { // Makes the Add to Cloud and Share buttons appear upon clicking submit
-			document.getElementById("add-button").style.visibility = "visible";
-    		document.getElementById("share-button").style.visibility = "visible";
-		}
-	</script>
-	</script>
 </head>
 
 
 <body>
-	<div id="header"><img src="img/homeLogo.jpg"></div>
-	<div id="searchBox"> <!--Original input form-->
-			<input id="inputBox" type="search" name="artistInputted" placeholder="Find Artist's Cloud"/>
-			<button class="submitButton" type="submit" onclick="makeCloud()"/> <!--showshare commented out for now.. -->
-	</div>
-	<div id="cloudBox">
-		<canvas id="my_canvas">Your browser does not support the HTML5 canvas tag.</canvas>
-	</div>
+	<header>
+		<div id="header">
+			<img id="logo" src="img/homeLogo.jpg">
+			<div id="searchBox">
+				<input id="inputBox" type="text" name="text" placeholder="Find Artist's Cloud">
+				<button id="submitButton" value="">
+			</div>
+		</div>
+	</header>
 	
-	<!--allthis shit hidden for now -Josh -->
-	<div id="add-button" style="visibility:hidden">
-		<button class="submitButton" onclick="addToCloud()">Add To Cloud</button>   <!--Implement functionality for adding more artists!-->
-	</div>
-	<br>
-	<div id="share-button" style="visibility:hidden"> <!-- Edit to reflect correct website not google -->
-		<a href="http://www.facebook.com/sharer.php?u=http://www.google.com" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" /></a> 
-	</div>
+	<div id="cloudBox"/>
 
+	<script>
+	$("#submitButton").click(function(){
+		$.ajax({
 
+				type: "post",
+				url: "getCloud.php",
+				data: 'name=' + $('#inputButton').val(),
+				success: function(msg){
+					$('#cloudBox').html(msg);
+				}
+		});
+	});
+	</script>
 
 
 </body>

@@ -82,12 +82,11 @@ function getSongsByWord(){
 }
 
 
-$hello = getSongsByWord();
+$hello = getLyricsByArtist();
 for($x = 0; $x<count($hello); $x++){
     echo $hello[$x] . "</br>";
 }
 exit;
-#getLyricsByArtist();
 
 
 ?>

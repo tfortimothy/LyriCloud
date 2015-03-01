@@ -3,49 +3,61 @@ title {
 }
 
 body {
-	/*background-color: #7F7F7F;*/
+	margin: 0;
 }
 
 #header {
 	width: 100%;
-	text-align: center;
-	padding: 100px 0 20px 0;
+	padding: 20px 0 12px 12px;
+	position: fixed;
+	top: 0px;
+	background: white;
+	border: 1px solid gray;
+	box-shadow: 5px 5px 10px darkgray;
 }
 
 #searchBox {
-	text-align: center;
+	//text-align: center;
+	display: inline-block;
+}
+
+#logo {
+	margin: 0 30px -23px 0;
 }
 
 #inputBox {
+	display: inline-block;
 	border-width:2px;
 	padding: 0 0 0 10px;
-	height: 40px;
-	width: 400px;
-}
-
-#cloudBox {
-	text-align: center;
-}
-
-#canvas {
-	/*height: 600px;
-	width: 600px;*/
-	text-align: center;
+	height: 45px;
+	width: 700px;
 }
 
 #submitButton {
-	height:40px;
-	width:40px;
-	background: url(img/transMagGlass.png);
+	height:49px;
+	width:80px;
+	margin-top: -2px;
+	background: url(img/transMagGlass.png) no-repeat center;
 	vertical-align: middle;
 	background-color: #01abd6;
-	border: none;
+	border: none; 
+}
+
+#cloudResult {
+	margin: auto;
+	max-width: 700px;
+	padding-top: 160px;
 }
 
 #submitButton:hover {
 	background-color: #5f95bc;
 }
 
+a {
+	text-decoration:none;
+}
+
+/*
 .songPageButton {
 	text-align: left;
 	background-color:purple;
@@ -59,3 +71,4 @@ body {
 	border: 0;
 	box-shadow: 0;
 }
+*/
