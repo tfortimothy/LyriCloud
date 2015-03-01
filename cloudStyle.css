@@ -33,8 +33,7 @@ body {
 	text-align: center;
 }
 
-
-.submitButton {
+#submitButton {
 	height:40px;
 	width:40px;
 	background: url(img/transMagGlass.png);
@@ -43,7 +42,7 @@ body {
 	border: none;
 }
 
-.submitButton:hover {
+#submitButton:hover {
 	background-color: #5f95bc;
 }
 
