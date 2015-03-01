@@ -21,7 +21,7 @@
 
 /* --- BEGIN PHP CODE --- */
 
-$_POST["text"] = "In Chewy, I'm some hot nigga
+$_POST['text'] = "In Chewy, I'm some hot nigga
 Like I talk to Shyste when I shot niggas
 Like you seen em twirl then he drop, nigga
 And We Keep them 9 milli's on my block, nigga
@@ -133,7 +133,7 @@ function freq_filter($words, $filter) {
 
 /* Builds the word cloud and returns a string containing a div of the word cloud. */
 
-function word_cloud($words) {
+function word_cloud($words, $name) {
 
     $tags = 0;
     $cloud = "<div>";
@@ -160,7 +160,7 @@ function word_cloud($words) {
         }
         
         if ($font_size >= $fmin) {
-            $cloud .= "<a href=\"google.com\" style=\"font-size: {$font_size}px; color: $color;\">$word</a> ";
+            $cloud .= "<a href=\"specificWord.php?artist={$name}&word={$word}\" style=\"font-size: {$font_size}px; color: $color;\">$word</a> ";
             $tags++;
         }
         
@@ -189,7 +189,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST' && $_POST['text'] != '') {
     /* Optionally, you can filter out words below a specific frequency... Uncomment the line below to do so */
     /* $word_frequency = freq_filter($word_frequency, 3); */
 
-    $word_c = word_cloud($word_frequency); /* Generate a word cloud and get number of tags */
+    $word_c = word_cloud($word_frequency, $_POST['name']); /* Generate a word cloud and get number of tags */
     $word_cloud = $word_c[0]; /* The word cloud */
     $tags = $word_c[1]; /* The number of tags in the word cloud*/
 

@@ -95,6 +95,11 @@
 		</div>
 	</header>
 	
+	<form method="GET" action="WordCloud.php">
+		<input type="text" name="butt">
+		<input type="submit">
+	</form>
+	
 	<div id="cloudBox"/>
 
 	<script>
@@ -103,7 +108,10 @@
 
 				type: "post",
 				url: "getCloud.php",
-				data: 'name=' + $('#inputButton').val(),
+				data: {
+					text: 'boop boop boop boop',
+					name: $('#inputBox').val()
+				},
 				success: function(msg){
 					$('#cloudBox').html(msg);
 				}
