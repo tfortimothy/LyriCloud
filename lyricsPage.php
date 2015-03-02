@@ -37,7 +37,7 @@ function getLyricsBySong($_artist, $_song, $_word)
 }
 
 $lyrics = getLyricsBySong($_GET['artist'], $_GET['song'], $_GET['word']);
-$keyword = $_GET['word'];
+$keyword =  $_GET['word'];
 $lyrics = preg_replace("/\w*?".preg_quote($keyword)."\w*/i", "<span class='highlight'>$0</span>", $lyrics);
 echo $lyrics;
 ?>
