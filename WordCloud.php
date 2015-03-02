@@ -7,7 +7,7 @@
  */
 #ini_set('allow_url_fopen', 'on');
 #ini_set("user_agent", "PHP");
-function getLyricsByArtist()
+function getLyricsByArtist($artist)
 {
     include_once('simple_html_dom.php');
     // Create DOM from URL or file
@@ -25,7 +25,6 @@ function getLyricsByArtist()
     else{
         $song_size = count($song_links);
     }
-    echo $song_size;
     foreach($html->find('a') as $element) {
         if (strpos($element,'-lyrics-' . $artist) !== false) {
             $song_links[] = $element->href;
@@ -44,7 +43,7 @@ function getLyricsByArtist()
 
 
 }
-function getSongsByWord(){
+function getSongsByWord($word){
     include_once('simple_html_dom.php');
     // Create DOM from URL or file
     $artist = "Kanye West";
@@ -71,7 +70,7 @@ function getSongsByWord(){
         $htmlsong = file_get_html($song_links[$x]);
         foreach($htmlsong->find('div[id=lyrics-body-text]') as $lyrics ) {
             $str = preg_replace("/\[([^\[\]]++|(?R))*+\]/", "", $lyrics);
-            if (strpos($str, strtolower($word)) !== false || strpos($str, strtoupper($word)) !== false ){
+            if (strpos($str, strtolower($word)) !== false || strpos($str, strtoupper($word)) !== false || strpos($str, $word) !== false){
                 foreach ($htmlsong->find('span[class=title]') as $title) {
                     $array_songs[] = $title;
                 }
@@ -81,13 +80,41 @@ function getSongsByWord(){
     return $array_songs;
 }
 
-
-$hello = getSongsByWord();
-for($x = 0; $x<count($hello); $x++){
-    echo $hello[$x] . "</br>";
+function getLyricsBySong($_artist, $_song)
+{
+    include_once('simple_html_dom.php');
+    // Create DOM from URL or file
+    $artist = $_artist;
+    $artist = str_replace(" ", "-", $artist);
+    $artist = strtolower($artist);
+    $song = $_song;
+    $song = str_replace(" ", "-", $song);
+    $song = strtolower($song);
+    $html = file_get_html('http://www.metrolyrics.com/' . $artist . '-lyrics.html');
+    $song_links = "";
+    $str = "";
+    $massivesonglyrics = "";
+    foreach ($html->find('a') as $element) {
+        if (strpos($element, '-lyrics-' . $artist) !== false) {
+            if (strpos($element, strtolower($song)) !== false || strpos($element, strtoupper($song)) !== false || strpos($element, $song) !== false){
+                $song_links = $element->href;
+                break;
+            }
+        }
+    }
+    $song_size = 1;
+    $htmlsong = file_get_html($song_links);
+    foreach ($htmlsong->find('div[id=lyrics-body-text]') as $lyrics) {
+        $str = preg_replace("/\[([^\[\]]++|(?R))*+\]/", "", $lyrics);
+        $massivesonglyrics = $massivesonglyrics . $str;
+    }
+    return $massivesonglyrics;
 }
+
+
+getLyricsBySong("Kanye West", "all falls down");
 exit;
-#getLyricsByArtist();
+
 
 
 ?>
