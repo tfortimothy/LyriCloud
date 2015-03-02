@@ -51,8 +51,8 @@ function getSongsByWord($_word, $_artist){
     $song_links = array();
     $str = "";
     $song_size = 30;
-    if(count($song_links > 30)){
-        $song_size = 30;
+    if(count($song_links > 10)){
+        $song_size = 10;
     }
     else{
         $song_size = count($song_links);

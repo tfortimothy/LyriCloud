@@ -86,17 +86,21 @@
 
 <body>
 	<header>
-		<div id="header">
-			<img id="logo" src="img/homeLogo.jpg">
-			<div id="searchBox">
-				<input id="inputBox" type="text" name="text" placeholder="Find Artist's Cloud">
-				<button id="submitButton" value="">
-				<button id="addMoreButton" value="">
-			</div>
-		</div>
+		<div id="header">LyricFloat</div>
 	</header>
+	<div id="cloudPane">
+		<div id="cloudBox"></div>
+	</div>
 	
-	<div id="cloudBox"/>
+	<div id ="inputPane">
+		<input id="inputBox" type="text" name="text" placeholder="Input Text Here">
+		<div id="buttons">
+			<button id="addMoreButton">Add More To Cloud</button>
+			<a href="http://www.facebook.com/sharer.php?u=LyricFloat.com" id="shareButton" target="_blank"><img src="img/fb.png" alt="Facebook" /></a>
+			<button id="submitButton">Submit</button>
+		</div>
+	</div>
+			
 
 </body>
 </html>
@@ -104,7 +108,9 @@
 <script>
 	$("#submitButton").click(function(){
 		$.ajax({
-
+				beforeSend: function() {
+					$('#cloudBox').html("<div id=\"generating\">Generating Cloud...</div>");
+				},
 				type: "post",
 				url: "getCloud.php",
 				data: {
@@ -113,13 +119,17 @@
 				},
 				success: function(msg){
 					$('#cloudBox').html(msg);
+					$('#addMoreButton').css("visibility", "visible");
+					$('#shareButton img').css("visibility", "visible");
 				}
 		});
 	});
 	
 	$("#addMoreButton").click(function(){
 		$.ajax({
-
+				beforeSend: function() {
+					$('#cloudBox').html("<div id=\"generating\">Generating Cloud...</div>");
+				},
 				type: "post",
 				url: "getCloud.php",
 				data: {

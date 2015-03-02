@@ -3,54 +3,74 @@ title {
 }
 
 body {
-	margin: 0;
+	background: gray;
 }
 
 #header {
-	width: 100%;
-	padding: 20px 0 12px 12px;
-	position: fixed;
-	top: 0px;
+	font-size: 60px;
+	text-align: center;
+	font-family: Comic Sans, cursive;
+	font-style: italic;
+	padding: 15px 0;
+}
+
+#cloudPane {
+	text-align: center;
+	min-height: 300px;
+	margin-bottom: 10px;
+}
+
+#cloudBox {
+	width: 400px;
+	margin: 0 auto;
+}
+
+#generating {
+	padding-top: 100px;
+}
+
+#innerCloud {
 	background: white;
-	border: 1px solid gray;
-	box-shadow: 5px 5px 10px darkgray;
+	padding: 10px;
 }
 
-#searchBox {
-	//text-align: center;
-	display: inline-block;
-}
-
-#logo {
-	margin: 0 30px -23px 0;
+#inputPane {
+	width: 350px;
+	margin: 0 auto;
 }
 
 #inputBox {
-	display: inline-block;
-	border-width:2px;
-	padding: 0 0 0 10px;
-	height: 45px;
-	width: 700px;
+	width: 350px;
+	height: 30px;
+	font-weight: bold;
+	border: 3px solid purple;
+	margin-bottom: 8px;
+}
+
+#buttons {
+	/*text-align: right;*/
 }
 
 #submitButton {
-	height:49px;
-	width:80px;
-	margin-top: -2px;
-	background: url(img/transMagGlass.png) no-repeat center;
+	background: purple;
+	font-weight: bold;
+	height: 30px;
+	border: none;
+}
+
+#addMoreButton {
+	visibility: hidden;
+	background: purple;
+	font-weight: bold;
+	height: 30px;
+	border: none;
+	margin-right: 25px;
+}
+
+#shareButton img{
+	visibility: hidden;
 	vertical-align: middle;
-	background-color: #01abd6;
-	border: none; 
-}
-
-#cloudResult {
-	margin: auto;
-	max-width: 700px;
-	padding-top: 160px;
-}
-
-#submitButton:hover {
-	background-color: #5f95bc;
+	margin-right: 28px;
 }
 
 a {
@@ -58,7 +78,7 @@ a {
 }
 
 .hiddenText {
-	visibility: hidden;
+	display: none;
 }
 
 /*
