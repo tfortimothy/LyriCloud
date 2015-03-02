@@ -3,8 +3,9 @@
 $toSearch = $_GET['word'];
 $theArtist = $_GET['artist'];
 
-function getLyricsByArtist()
+function getLyricsByArtist($_artist)
 {
+    $artist= $_artist;
     include_once('simple_html_dom.php');
     // Create DOM from URL or file
     //$artist = "Britney Spears";
@@ -40,9 +41,11 @@ function getLyricsByArtist()
 
 
 }
-function getSongsByWord($word, $artist){
+function getSongsByWord($_word, $_artist){
     include_once('simple_html_dom.php');
     // Create DOM from URL or file
+    $artist= $_artist;
+    $word = $_word;
     $artist = str_replace(" ","-",$artist);
     $artist = strtolower($artist);
     $html = file_get_html('http://www.metrolyrics.com/'. $artist . '-lyrics.html');
@@ -65,17 +68,28 @@ function getSongsByWord($word, $artist){
         $htmlsong = file_get_html($song_links[$x]);
         foreach($htmlsong->find('div[id=lyrics-body-text]') as $lyrics ) {
             $str = preg_replace("/\[([^\[\]]++|(?R))*+\]/", "", $lyrics);
-            if (strpos($str, strtolower($word)) !== false || strpos($str, strtoupper($word)) !== false ){
-                foreach ($htmlsong->find('span[class=title]') as $title) {
-                    $array_songs[] = $title->plaintext;
+            if (stripos($str, strtolower($word)) !== false || stripos($str, strtoupper($word)) !== false || stripos($str, $word) !== false){
+                foreach ($htmlsong->find('title') as $title) {
+                    $finaltitle = get_string_between($title->plaintext, "-", "Lyrics");
+                    $array_songs[] = $finaltitle;
                 }
             }
         }
     }
+    #$array_songs = array_unique($array_songs);
+    echo count($array_songs);
     return $array_songs;
 }
-
+$songs = array();
 $songs = getSongsByWord($toSearch, $theArtist);
+function get_string_between($string, $start, $end){
+    $string = " ".$string;
+    $ini = strpos($string,$start);
+    if ($ini == 0) return "";
+    $ini += strlen($start);
+    $len = strpos($string,$end,$ini) - $ini;
+    return substr($string,$ini,$len);
+}
 
 ?>
 <html>
@@ -84,8 +98,7 @@ $songs = getSongsByWord($toSearch, $theArtist);
 	$formattedArtistName = str_replace(" ","%20",$theArtist);
 
 	for($x = 0; $x<count($songs); $x++){
-		$formattedSongName = trim(str_replace(" ","%20",$songs[$x]));
-		
+        $formattedSongName = $songs[$x];
 		echo "<a href=\"lyricsPage.php?artist=$formattedArtistName&song=$formattedSongName\">$songs[$x]</a><br>";
 	}
 ?>

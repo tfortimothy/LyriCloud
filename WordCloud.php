@@ -43,11 +43,11 @@ function getLyricsByArtist($artist)
 
 
 }
-function getSongsByWord($word){
+function getSongsByWord($_artist, $_word){
     include_once('simple_html_dom.php');
     // Create DOM from URL or file
-    $artist = "Kanye West";
-    $word = "nigga";
+    $artist = $_artist;
+    $word = $_word;
     $artist = str_replace(" ","-",$artist);
     $artist = strtolower($artist);
     $html = file_get_html('http://www.metrolyrics.com/'. $artist . '-lyrics.html');
@@ -112,7 +112,7 @@ function getLyricsBySong($_artist, $_song)
 }
 
 
-getLyricsBySong("Kanye West", "all falls down");
+getSongsByWord("Kanye West", "nigga");
 exit;
 
 

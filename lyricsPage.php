@@ -8,7 +8,7 @@ function getLyricsBySong($_artist, $_song)
     $artist = str_replace(" ", "-", $artist);
     $artist = strtolower($artist);
     $song = $_song;
-    $song = str_replace(" ", "-", $song);
+    #$song = str_replace(" ", "-", $song);
     $song = strtolower($song);
     $html = file_get_html('http://www.metrolyrics.com/' . $artist . '-lyrics.html');
     $song_links = "";
@@ -16,7 +16,7 @@ function getLyricsBySong($_artist, $_song)
     $massivesonglyrics = "";
     foreach ($html->find('a') as $element) {
         if (strpos($element, '-lyrics-' . $artist) !== false) {
-            if (strpos($element, strtolower($song)) !== false || strpos($element, strtoupper($song)) !== false || strpos($element, $song) !== false){
+            if (stripos($element, strtolower($song)) !== false || stripos($element, strtoupper($song)) !== false || stripos($element, $song) !== false){
                 $song_links = $element->href;
                 break;
             }
