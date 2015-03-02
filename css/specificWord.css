@@ -1,0 +1,37 @@
+body {
+	background: gray;
+	margin-left: 20px;
+}
+
+header {
+	margin-bottom: 15px;
+}
+
+#header {
+	font-size: 60px;
+	font-family: Comic Sans, cursive;
+	font-style: italic;
+	padding: 10px 0
+}
+
+#songName {
+	font-size: 30px;
+	font-weight: 400;
+	font-family: fantasy;
+}
+
+#songLink a{
+	font-size: 25px;
+	font-family: cursive;
+	text-decoration: none;
+	color: black;
+}
+
+#back {
+	border: none;
+	background: purple;
+	font-size: 22px;
+	width: 70px;
+	font-family: fantasy;
+	margin-top: 20px;
+}

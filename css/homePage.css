@@ -4,12 +4,13 @@ title {
 
 body {
 	background: gray;
+	font-family: fantasy;
 }
 
 #header {
 	font-size: 60px;
 	text-align: center;
-	font-family: Comic Sans, cursive;
+	font-family: cursive;
 	font-style: italic;
 	padding: 15px 0;
 }
@@ -47,30 +48,26 @@ body {
 	margin-bottom: 8px;
 }
 
-#buttons {
-	/*text-align: right;*/
-}
-
 #submitButton {
 	background: purple;
-	font-weight: bold;
-	height: 30px;
+	font-family: fantasy;
+	font-size: 20px;
 	border: none;
 }
 
 #addMoreButton {
 	visibility: hidden;
 	background: purple;
-	font-weight: bold;
-	height: 30px;
+	font-family: fantasy;
+	font-size: 20px;
 	border: none;
-	margin-right: 25px;
+	margin-right: 5px;
 }
 
 #shareButton img{
 	visibility: hidden;
-	vertical-align: middle;
-	margin-right: 28px;
+	vertical-align: bottom;
+	margin-right: 7px;
 }
 
 a {
@@ -80,19 +77,3 @@ a {
 .hiddenText {
 	display: none;
 }
-
-/*
-.songPageButton {
-	text-align: left;
-	background-color:purple;
-	height:30px;
-	width:80px;
-}
-
-#share-button img {
-	width: 35px;
-	padding: 5px;
-	border: 0;
-	box-shadow: 0;
-}
-*/

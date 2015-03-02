@@ -1,0 +1,45 @@
+.highlight {
+        background: yellow;
+}
+
+body {
+	background: gray;
+	margin-left: 20px;
+}
+
+header {
+	font-family: fantasy;
+}
+
+#header {
+	font-size: 60px;
+}
+
+#artist {
+	font-size: 30px;
+}
+
+#lyrics {
+	font-family: sans-serif;
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+
+#songSelection {
+	border: none;
+	background: purple;
+	font-size: 20px;
+	width: 150px;
+	font-family: fantasy;
+	margin: 20px 15px 0 0;
+}
+
+#home {
+	border: none;
+	background: purple;
+	font-size: 20px;
+	width: 120px;
+	font-family: fantasy;
+	margin: 20px 15px 0 0;
+}
+
