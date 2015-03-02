@@ -21,61 +21,6 @@
 
 /* --- BEGIN PHP CODE --- */
 
-/*
-$_POST['text'] = "In Chewy, I'm some hot nigga
-Like I talk to Shyste when I shot niggas
-Like you seen em twirl then he drop, nigga
-And We Keep them 9 milli's on my block, nigga
-And Monte Keep it on him, he done dropped niggas
-And Trigger he be wilding, he some hot nigga
-Tones known to get busy with them Glocks, nigga
-Try to run down and you can catch a shot, nigga
-Running through these checks 'til I pass out
-Your shorty gave me neck 'til I pass out
-I swear to God, all I do is cash out
-And if you ain't a hoe, get up out my trap house
-I been selling crack since like the 5th grade
-Really never made no difference what the shit made
-Jaja taught me flip them packs and how to maintain
-Get that money back and spend it on the same thing
-Shorty like the way that I ball out
-I be getting money 'til I fall out
-You talking cash dog, I goes all out
-Shorty love the way that I floss out
-Free Greezy though, let all of my dogs out
-Mama said no pussy cats inside my dog house
-That's what got my daddy locked up in the dog pound
-Free Phantom though, let all of my dogs out
-We gon' pull up in that hooptie like we cops on 'em
-With M16s, we gon' put some shots on em'
-I send a lil' thot to send the drop on em'
-She gon' call me up and I'm a sick the hots on 'em
-Grimey savage, that's what we are
-Grimey shooters dressed in G-Star
-GS9, I go so Hard
-But GS for my gun squad
-And bitch if there's a problem we gon' gun brawl
-Shots popping 'out The AR
-I'm with Trigger, I'm with Rasha, I'm with A-Raw
-Broad daylight and we gon' let them things bark
-Tell them niggas free Meeshie, hoe
-Someway, free Breezy, hoe
-And tell my niggas, Shmurda teaming, hoe
-Mitch caught a body 'bout a week ago
-Fuck with us and then we tweaking, hoe
-Run up on that nigga get to squeezing, hoe
-Everybody catching bullet holes
-Niggas got me on my bully yo
-I'mma run up, put that gun on 'em
-I'mma run up, go dumb on 'em
-Niggas got me on that young shit
-Got me on that go dumb shit
-
-Got me on that go dumb shit, man
-Trap mode in this motherfucker, hotter than a bitch
-Ayo, pour up, I need some more drank";
-*/
-
 $stopwords = "able,about,above,according,accordingly,across,actually,after,afterwards,again,against,ain't,all,allow,allows,almost,alone,along,already,also,although,always,am,among,amongst,an,and,another,any,anybody,anyhow,anyone,anything,anyway,anyways,anywhere,apart,appear,appreciate,appropriate,are,aren't,around,as,aside,ask,asking,associated,at,available,away,awfully,be,became,because,become,becomes,becoming,been,before,beforehand,behind,being,believe,below,beside,besides,best,better,between,beyond,both,brief,but,by,br,c'mon,c's,class,came,can,can't,cannot,cant,cause,causes,certain,certainly,changes,clearly,co,com,come,comes,concerning,consequently,consider,considering,contain,containing,contains,corresponding,could,couldn't,course,currently,definitely,described,despite,did,didn't,different,do,does,doesn't,doing,don't,done,down,downwards,during,each,edu,eg,eight,either,else,elsewhere,enough,entirely,especially,et,etc,even,ever,every,everybody,everyone,everything,everywhere,ex,exactly,example,except,far,few,fifth,first,five,followed,following,follows,for,former,formerly,forth,four,from,further,furthermore,get,gets,getting,given,gives,go,goes,going,gone,got,gotten,greetings,had,hadn't,happens,hardly,has,hasn't,have,haven't,having,he,he's,hello,help,hence,her,here,here's,hereafter,hereby,herein,hereupon,hers,herself,hi,him,himself,his,hither,hopefully,how,howbeit,however,i'd,i'll,i'm,i've,ie,if,ignored,immediate,in,inasmuch,inc,indeed,indicate,indicated,indicates,inner,insofar,instead,into,inward,is,isn't,it,it'd,it'll,it's,its,itself,just,keep,keeps,kept,know,knows,known,last,lately,later,latter,latterly,least,less,lest,let,let's,like,liked,likely,little,look,looking,looks,ltd,mainly,many,may,maybe,me,mean,meanwhile,merely,might,more,moreover,most,mostly,much,must,my,myself,name,namely,nd,near,nearly,necessary,need,needs,neither,never,nevertheless,new,next,nine,no,nobody,non,none,noone,nor,normally,not,nothing,novel,now,nowhere,obviously,of,off,often,oh,ok,okay,old,on,once,one,ones,only,onto,or,other,others,otherwise,ought,our,ours,ourselves,out,outside,over,overall,own,particular,particularly,per,perhaps,placed,please,plus,possible,presumably,probably,provides,que,quite,qv,rather,rd,re,really,reasonably,regarding,regardless,regards,relatively,respectively,right,said,same,saw,say,saying,says,second,secondly,see,seeing,seem,seemed,seeming,seems,seen,self,selves,sensible,sent,serious,seriously,seven,several,shall,she,should,shouldn't,since,six,so,some,somebody,somehow,someone,something,sometime,sometimes,somewhat,somewhere,soon,sorry,specified,specify,specifying,still,sub,such,sup,sure,t's,take,taken,tell,tends,th,than,thank,thanks,thanx,that,that's,thats,the,their,theirs,them,themselves,then,thence,there,there's,thereafter,thereby,therefore,therein,theres,thereupon,these,they,they'd,they'll,they're,they've,think,third,this,thorough,thoroughly,those,though,three,through,throughout,thru,thus,to,together,too,took,toward,towards,tried,tries,truly,try,trying,twice,two,un,under,unfortunately,unless,unlikely,until,unto,up,upon,us,use,used,useful,uses,using,usually,\"verse\",value,various,very,via,viz,vs,want,wants,was,wasn't,way,we,we'd,we'll,we're,we've,welcome,well,went,were,weren't,what,what's,whatever,when,whence,whenever,where,where's,whereafter,whereas,whereby,wherein,whereupon,wherever,whether,which,while,whither,who,who's,whoever,whole,whom,whose,why,will,willing,wish,with,within,without,won't,wonder,would,would've,wouldn't,yes,yet,you,you'd,you'll,you're,you've,your,yours,yourself,yourselves,zero,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,div";
 
 $stopwords = explode(",", $stopwords);

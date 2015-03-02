@@ -67,7 +67,7 @@ function getSongsByWord($word, $artist){
             $str = preg_replace("/\[([^\[\]]++|(?R))*+\]/", "", $lyrics);
             if (strpos($str, strtolower($word)) !== false || strpos($str, strtoupper($word)) !== false ){
                 foreach ($htmlsong->find('span[class=title]') as $title) {
-                    $array_songs[] = $title;
+                    $array_songs[] = $title->plaintext;
                 }
             }
         }
@@ -76,19 +76,17 @@ function getSongsByWord($word, $artist){
 }
 
 $songs = getSongsByWord($toSearch, $theArtist);
-/*
-for($x = 0; $x<count($hello); $x++){
-    echo $hello[$x] . "</br>";
-}
-exit;
-#getLyricsByArtist();
-*/
+
 ?>
 <html>
 <body>
 <?php 
+	$formattedArtistName = str_replace(" ","%20",$theArtist);
+
 	for($x = 0; $x<count($songs); $x++){
-		echo $songs[$x] . "</br>";
+		$formattedSongName = trim(str_replace(" ","%20",$songs[$x]));
+		
+		echo "<a href=\"lyricsPage.php?artist=$formattedArtistName&song=$formattedSongName\">$songs[$x]</a><br>";
 	}
 ?>
 </body>
