@@ -91,6 +91,7 @@
 			<div id="searchBox">
 				<input id="inputBox" type="text" name="text" placeholder="Find Artist's Cloud">
 				<button id="submitButton" value="">
+				<button id="addMoreButton" value="">
 			</div>
 		</div>
 	</header>
@@ -107,7 +108,22 @@
 				type: "post",
 				url: "getCloud.php",
 				data: {
-					//text: 'boop boop boop boop',
+					prev: '',
+					name: $('#inputBox').val()
+				},
+				success: function(msg){
+					$('#cloudBox').html(msg);
+				}
+		});
+	});
+	
+	$("#addMoreButton").click(function(){
+		$.ajax({
+
+				type: "post",
+				url: "getCloud.php",
+				data: {
+					prev: $('#prevText').text(),
 					name: $('#inputBox').val()
 				},
 				success: function(msg){
