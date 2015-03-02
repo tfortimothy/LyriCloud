@@ -13,9 +13,9 @@ function getSongsByWord($_word, $_artist){
     $html = file_get_html('http://www.metrolyrics.com/'. $artist . '-lyrics.html');
     $song_links = array();
     $str = "";
-    $song_size = 30;
-    if(count($song_links > 10)){
-        $song_size = 10;
+    $song_size = 15;
+    if(count($song_links > 15)){
+        $song_size = 15;
     }
     else{
         $song_size = count($song_links);
