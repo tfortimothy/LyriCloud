@@ -22,7 +22,6 @@ function getLyricsByArtist($_artist)
     else{
         $song_size = count($song_links);
     }
-    echo $song_size;
     foreach($html->find('a') as $element) {
         if (strpos($element,'-lyrics-' . $artist) !== false) {
             $song_links[] = $element->href;
@@ -76,8 +75,6 @@ function getSongsByWord($_word, $_artist){
             }
         }
     }
-    #$array_songs = array_unique($array_songs);
-    echo count($array_songs);
     return $array_songs;
 }
 $songs = array();
@@ -96,10 +93,10 @@ function get_string_between($string, $start, $end){
 <body>
 <?php 
 	$formattedArtistName = str_replace(" ","%20",$theArtist);
-
+    $formattedWord = $toSearch;
 	for($x = 0; $x<count($songs); $x++){
         $formattedSongName = $songs[$x];
-		echo "<a href=\"lyricsPage.php?artist=$formattedArtistName&song=$formattedSongName\">$songs[$x]</a><br>";
+		echo "<a href=\"lyricsPage.php?artist=$formattedArtistName&song=$formattedSongName&word=$formattedWord\">$songs[$x]</a><br>";
 	}
 ?>
 </body>

@@ -1,6 +1,11 @@
+<style type="text/css">
+    .highlight {
+        background: yellow;
+    }
+</style>
 <?php
 
-function getLyricsBySong($_artist, $_song)
+function getLyricsBySong($_artist, $_song, $_word)
 {
     include_once('simple_html_dom.php');
     // Create DOM from URL or file
@@ -31,7 +36,8 @@ function getLyricsBySong($_artist, $_song)
     return $massivesonglyrics;
 }
 
-$lyrics = getLyricsBySong($_GET['artist'], $_GET['song']);
-
+$lyrics = getLyricsBySong($_GET['artist'], $_GET['song'], $_GET['word']);
+$keyword = $_GET['word'];
+$lyrics = preg_replace("/\w*?".preg_quote($keyword)."\w*/i", "<span class='highlight'>$0</span>", $lyrics);
 echo $lyrics;
 ?>
