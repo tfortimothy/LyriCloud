@@ -1,13 +1,17 @@
 <?php
-
-$toSearch = $_GET['word'];
-$theArtist = $_GET['artist'];
-
+/**
+ * Created by PhpStorm.
+ * User: SidManoj
+ * Date: 2/26/15
+ * Time: 8:09 PM
+ */
+#ini_set('allow_url_fopen', 'on');
+#ini_set("user_agent", "PHP");
 function getLyricsByArtist()
 {
     include_once('simple_html_dom.php');
     // Create DOM from URL or file
-    //$artist = "Britney Spears";
+    $artist = "Britney Spears";
     $artist = str_replace(" ","-",$artist);
     $artist = strtolower($artist);
     $html = file_get_html('http://www.metrolyrics.com/'. $artist . '-lyrics.html');
@@ -40,9 +44,11 @@ function getLyricsByArtist()
 
 
 }
-function getSongsByWord($word, $artist){
+function getSongsByWord(){
     include_once('simple_html_dom.php');
     // Create DOM from URL or file
+    $artist = "Kanye West";
+    $word = "nigga";
     $artist = str_replace(" ","-",$artist);
     $artist = strtolower($artist);
     $html = file_get_html('http://www.metrolyrics.com/'. $artist . '-lyrics.html');
@@ -75,21 +81,13 @@ function getSongsByWord($word, $artist){
     return $array_songs;
 }
 
-$songs = getSongsByWord($toSearch, $theArtist);
-/*
+
+$hello = getSongsByWord();
 for($x = 0; $x<count($hello); $x++){
     echo $hello[$x] . "</br>";
 }
 exit;
 #getLyricsByArtist();
-*/
+
+
 ?>
-<html>
-<body>
-<?php 
-	for($x = 0; $x<count($songs); $x++){
-		echo $songs[$x] . "</br>";
-	}
-?>
-</body>
-</html>
