@@ -40,7 +40,7 @@ $lyrics = preg_replace("/\w*?".preg_quote($keyword)."\w*/i", "<span class='highl
 
 <html>
 <head>
-	<link rel="stylesheet" href="css/lyricsPage.css">
+	<link rel="stylesheet" href="../css/lyricsPage.css">
 </head>
 <body>
 	<header>

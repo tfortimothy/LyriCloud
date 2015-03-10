@@ -4,7 +4,7 @@
 
 <head>
 	<title> LyriCloud </title>
-	<link rel="stylesheet" href="../css/homePage.css">
+	<link rel="stylesheet" href="cloudStyle.css">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
 	<script src="../wordcloud2.js-master/src/wordcloud2.js"></script>
@@ -86,21 +86,17 @@
 
 <body>
 	<header>
-		<div id="header">LyricFloat</div>
-	</header>
-	<div id="cloudPane">
-		<div id="cloudBox"></div>
-	</div>
-	
-	<div id ="inputPane">
-		<input id="inputBox" type="text" name="text" placeholder="Input Text Here">
-		<div id="buttons">
-			<button id="addMoreButton">Add More To Cloud</button>
-			<a href="http://www.facebook.com/sharer.php?u=LyricFloat.com" id="shareButton" target="_blank"><img src="img/fb.png" alt="Facebook" /></a>
-			<button id="submitButton">Submit</button>
+		<div id="header">
+			<img id="logo" src="img/homeLogo.jpg">
+			<div id="searchBox">
+				<input id="inputBox" type="text" name="text" placeholder="Find Artist's Cloud">
+				<button id="submitButton" value="">
+				<button id="addMoreButton" value="">
+			</div>
 		</div>
-	</div>
-			
+	</header>
+	
+	<div id="cloudBox"/>
 
 </body>
 </html>
@@ -108,9 +104,7 @@
 <script>
 	$("#submitButton").click(function(){
 		$.ajax({
-				beforeSend: function() {
-					$('#cloudBox').html("<div id=\"generating\">Generating Cloud...</div>");
-				},
+
 				type: "post",
 				url: "getCloud.php",
 				data: {
@@ -119,17 +113,13 @@
 				},
 				success: function(msg){
 					$('#cloudBox').html(msg);
-					$('#addMoreButton').css("visibility", "visible");
-					$('#shareButton img').css("visibility", "visible");
 				}
 		});
 	});
 	
 	$("#addMoreButton").click(function(){
 		$.ajax({
-				beforeSend: function() {
-					$('#cloudBox').html("<div id=\"generating\">Generating Cloud...</div>");
-				},
+
 				type: "post",
 				url: "getCloud.php",
 				data: {

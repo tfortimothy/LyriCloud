@@ -54,7 +54,7 @@ function get_string_between($string, $start, $end){
 ?>
 <html>
 <head>
-<link rel="stylesheet" href="css/specificWord.css">
+<link rel="stylesheet" href="../css/specificWord.css">
 </head>
 <header>
 	<div id="header">LyricFloat</div>
