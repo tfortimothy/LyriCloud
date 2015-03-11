@@ -3,7 +3,7 @@ include 'WordCloud.php';
 $artist = $_GET['artist'];
 $song =  $_GET['song'];
 $provider = new WordCloud;
-$lyrics = $provider->getLyricsBySong($artist, $song, $_GET['word']);
+$lyrics = $provider->getLyricsBySong($artist, $song, $_GET['word'], 'http://www.metrolyrics.com/');
 $keyword =  $_GET['word'];
 $lyrics = preg_replace("/\w*?".preg_quote($keyword)."\w*/i", "<span class='highlight'>$0</span>", $lyrics);
 ?>

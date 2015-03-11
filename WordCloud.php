@@ -79,7 +79,7 @@ class WordCloud
         return $array_songs;
     }
 
-    function getLyricsBySong($_artist, $_song, $_word)
+    function getLyricsBySong($_artist, $_song, $_word, $_site)
     {
         include_once('simple_html_dom.php');
         // Create DOM from URL or file
