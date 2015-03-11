@@ -1,35 +1,43 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: SidManoj
- * Date: 2/26/15
- * Time: 8:09 PM
- */
-
 class WordCloud
 {
-    function getLyricsByArtist($artist$, $site)
+	function get_string_between($string, $start, $end){
+		$string = " ".$string;
+		$ini = strpos($string,$start);
+		if ($ini == 0) return "";
+		$ini += strlen($start);
+		$len = strpos($string,$end,$ini) - $ini;
+		return substr($string,$ini,$len);
+	}
+	
+    function getLyricsByArtist($artist, $site, $upperSongLimit)
     {
         include_once('simple_html_dom.php');
         // Create DOM from URL or file
         $artist = str_replace(" ", "-", $artist);
         $artist = strtolower($artist);
-        $html = file_get_html($site . $artist . '-lyrics.html');
+		
+		try {
+			$html = file_get_html($site . $artist . '-lyrics.html');
+		} catch (Exception $e) {
+			return "<div>Invalid Artist</div>";
+		}
+        
         $song_links = array();
         $str = "";
-        $song_size = 10;
         $massivesonglyrics = "";
-        if (count($song_links > 10)) {
-            $song_size = 10;
-        } else {
-            $song_size = count($song_links);
-        }
 
         foreach ($html->find('a') as $element) {
             if (strpos($element, '-lyrics-' . $artist) !== false) {
                 $song_links[] = $element->href;
             }
         }
+		
+		$song_size = count($song_links);
+		if ($song_size > $upperSongLimit) {
+            $song_size = $upperSongLimit;
+        } 
+		
         for ($x = 0; $x < $song_size; $x++) {
             $htmlsong = file_get_html($song_links[$x]);
             foreach ($htmlsong->find('div[id=lyrics-body-text]') as $lyrics) {
@@ -38,10 +46,9 @@ class WordCloud
             }
         }
         return $massivesonglyrics;
-    }
-
-
-    function getSongsByWord($_word, $_artist)
+	}
+	
+    function getSongsByWord($_word, $_artist, $_site, $upperSongLimit)
     {
         include_once('simple_html_dom.php');
         // Create DOM from URL or file
@@ -49,20 +56,21 @@ class WordCloud
         $word = $_word;
         $artist = str_replace(" ", "-", $artist);
         $artist = strtolower($artist);
-        $html = file_get_html('http://www.metrolyrics.com/' . $artist . '-lyrics.html');
+        $html = file_get_html($_site . $artist . '-lyrics.html');
         $song_links = array();
         $str = "";
-        $song_size = 10;
-        if (count($song_links > 10)) {
-            $song_size = 10;
-        } else {
-            $song_size = count($song_links);
-        }
+		
         foreach ($html->find('a') as $element) {
             if (strpos($element, '-lyrics-' . $artist) !== false) {
                 $song_links[] = $element->href;
             }
         }
+		
+		$song_size = count($song_links);
+		if ($song_size > $upperSongLimit) {
+            $song_size = $upperSongLimit;
+        } 
+		
         $array_songs = array();
         for ($x = 0; $x < $song_size; $x++) {
             $htmlsong = file_get_html($song_links[$x]);
@@ -70,7 +78,7 @@ class WordCloud
                 $str = preg_replace("/\[([^\[\]]++|(?R))*+\]/", "", $lyrics);
                 if (stripos($str, strtolower($word)) !== false || stripos($str, strtoupper($word)) !== false || stripos($str, $word) !== false) {
                     foreach ($htmlsong->find('title') as $title) {
-                        $finaltitle = get_string_between($title->plaintext, "-", "Lyrics");
+                        $finaltitle = $this->get_string_between($title->plaintext, "-", "Lyrics");
                         $array_songs[] = $finaltitle;
                     }
                 }
@@ -78,7 +86,7 @@ class WordCloud
         }
         return $array_songs;
     }
-
+	
     function getLyricsBySong($_artist, $_song, $_word, $_site)
     {
         include_once('simple_html_dom.php');

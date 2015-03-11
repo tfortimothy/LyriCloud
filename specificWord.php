@@ -6,25 +6,16 @@ $theArtist = $_GET['artist'];
 $provider = new WordCloud;
 
 $songs = array();
-$songs = $provider->getSongsByWord($toSearch, $theArtist);
-
-function get_string_between($string, $start, $end){
-    $string = " ".$string;
-    $ini = strpos($string,$start);
-    if ($ini == 0) return "";
-    $ini += strlen($start);
-    $len = strpos($string,$end,$ini) - $ini;
-    return substr($string,$ini,$len);
-}
-
+$songs = $provider->getSongsByWord($toSearch, $theArtist, 'http://www.metrolyrics.com/', 10);
 ?>
+
 <html>
 <head>
 <link rel="stylesheet" href="css/specificWord.css">
 </head>
 <header>
 	<div id="header">LyricFloat</div>
-	<div id="songName"> <?php echo strtoupper($toSearch) ?> </div>
+	<div id="songName"><?php echo strtoupper($toSearch)?></div>
 </header>
 <body>
 <?php 
