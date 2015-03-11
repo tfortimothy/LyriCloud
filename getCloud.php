@@ -88,7 +88,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST' && $_POST['name'] != '') {
     
     //$text = $_POST['text']; /* Get the posted text */
 	$provider = new WordCloud;
-    $text = $provider->getLyricsByArtist($_POST['name']) . $_POST['prev'];
+    $text = $provider->getLyricsByArtist($_POST['name'], 'http://www.metrolyrics.com/') . $_POST['prev'];
     $words = str_word_count($text, 1); /* Generate list of words */
     $word_count = count($words); /* Word count */
     $unique_words = count( array_unique($words) ); /* Unique word count */

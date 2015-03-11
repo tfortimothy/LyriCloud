@@ -1,17 +1,18 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: SidManoj
- * Date: 3/8/15
- * Time: 10:20 PM
- */
 require_once 'WordCloud.php';
 class WordCloudTest extends PHPUnit_Framework_TestCase {
-    public function testPushAndPop()
+    public function testGetLyricsBySongReturnsLyricsIfValidSong()
     {
-        $a = new WordCloud();
-        $b = $a->getLyricsByArtist("Kanye West");
-        $this->assertEquals("", $b);
+        $provider = new WordCloud();
+        $lyrics = $provider->getLyricsBySong("testartist", "testsong", "test", "test/");
+        $this->assertEquals("<div id=\"lyrics-body-text\">These are test lyrics</div>", $lyrics);
+    }
+	
+	public function testGetLyricsBySongReturnsEmptyIfInvalidSong()
+    {
+        $provider = new WordCloud();
+        $lyrics = $provider->getLyricsBySong("testartist", "invalidSong", "test", "test/");
+        $this->assertEquals("", $lyrics);
     }
 }
  

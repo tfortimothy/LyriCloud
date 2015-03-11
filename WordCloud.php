@@ -8,13 +8,13 @@
 
 class WordCloud
 {
-    function getLyricsByArtist($artist)
+    function getLyricsByArtist($artist$, $site)
     {
         include_once('simple_html_dom.php');
         // Create DOM from URL or file
         $artist = str_replace(" ", "-", $artist);
         $artist = strtolower($artist);
-        $html = file_get_html('http://www.metrolyrics.com/' . $artist . '-lyrics.html');
+        $html = file_get_html($site . $artist . '-lyrics.html');
         $song_links = array();
         $str = "";
         $song_size = 10;
@@ -89,7 +89,7 @@ class WordCloud
         $song = $_song;
         #$song = str_replace(" ", "-", $song);
         $song = strtolower($song);
-        $html = file_get_html('http://www.metrolyrics.com/' . $artist . '-lyrics.html');
+        $html = file_get_html($_site . $artist . '-lyrics.html');
         $song_links = "";
         $str = "";
         $massivesonglyrics = "";
@@ -102,6 +102,9 @@ class WordCloud
             }
         }
         $song_size = 1;
+		if($song_links == "") {
+			return "";
+		}
         $htmlsong = file_get_html($song_links);
         foreach ($htmlsong->find('div[id=lyrics-body-text]') as $lyrics) {
             $str = preg_replace("/\[([^\[\]]++|(?R))*+\]/", "", $lyrics);
